@@ -1,9 +1,9 @@
 # Rydberg
-Investigating the interactions with Rydberg atoms and light
+Investigating the interactions with Rydberg atoms and light<br>
 
-Analytic Results Moslty use QuTiP
+Analytic Results Moslty use QuTiP<br>
 
-Useful Sources:
+###Useful Sources:<br>
 CJ Foot, atomic ohys ch7
 CS Adams, Optics fzf
 	Appendix: induced dipole
