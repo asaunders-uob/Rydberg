@@ -112,7 +112,7 @@ class Atom_sim(object):
         self.data_points = np.append(self.data_points,full_coords,axis=0)
         return full_coords
 
-    def solve(self, duration, t_step=1E-6, anim=False):
+    def solve(self, duration, t_step=1E-6, savefile = None, save=False, anim=False):
         ''' 
         solves the position of atoms over a period of time includes t=0 and t=duration
 
@@ -120,13 +120,20 @@ class Atom_sim(object):
         duration: total time to solve over (s)
         t_step: time incriments (s)
         '''
-
+        if savefile:
+            try: 
+                self.data_points = np.load(savefile+".npy")
+                return self.data_points
+            except:
+                print("no file can be found: "+savefile)
         time =0
         frames = int(duration/t_step)
         for i in tqdm(range(frames)):
             self.update_pos(t_step)
         if anim:
             self.animated_2d(int(duration/t_step))
+        if save:
+            np.save(savefile,self.data_points)
         return self.data_points
 
     def animated_2d(self,frames,x=0,y=0):
